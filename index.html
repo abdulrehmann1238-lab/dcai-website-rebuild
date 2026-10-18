@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en-PH">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231F4B47'/><circle cx='9' cy='16' r='2.5' fill='%23B38442'/><circle cx='16' cy='16' r='2.5' fill='%23EDEAE2'/><circle cx='23' cy='16' r='2.5' fill='%23B38442'/><line x1='6' y1='16' x2='26' y2='16' stroke='%23EDEAE2' stroke-width='1.5'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DCAI — Digicom Controls & Automation Inc. | Smart-Building Distribution</title>
+    <meta name="description" content="DCAI distributes and supports building control systems across the Philippines. Four brands, one technical library, and a certified dealer network." />
+
+    <!-- Google Fonts: Newsreader, Hanken Grotesk, JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet" />
+
+    <style>
+      /* Critical loader styles */
+      #dcai-initial-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background-color: #14201F;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        pointer-events: all;
+      }
+      #dcai-initial-loader.loaded {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .loader-bus {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+      .loader-line {
+        position: relative;
+        width: 48px;
+        height: 1px;
+        background-color: #EDEAE2;
+      }
+      .loader-node {
+        position: absolute;
+        top: -3px;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background-color: #B38442;
+      }
+      .loader-node.n1 { left: 0; }
+      .loader-node.n2 { left: 50%; transform: translateX(-50%); background-color: #EDEAE2; }
+      .loader-node.n3 { right: 0; }
+      .loader-wordmark {
+        font-family: 'Newsreader', serif;
+        font-size: 44px;
+        font-weight: 500;
+        color: #EDEAE2;
+        letter-spacing: -0.02em;
+        line-height: 1;
+      }
+      .loader-bar-track {
+        width: 140px;
+        height: 1.5px;
+        background-color: rgba(237, 234, 226, 0.15);
+        border-radius: 99px;
+        overflow: hidden;
+        margin-bottom: 12px;
+      }
+      .loader-bar-fill {
+        height: 100%;
+        width: 30%;
+        background-color: #B38442;
+        animation: loaderProgress 1.2s ease-in-out infinite alternate;
+      }
+      .loader-subtext {
+        font-family: 'Hanken Grotesk', sans-serif;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: rgba(237, 234, 226, 0.6);
+      }
+      @keyframes loaderProgress {
+        0% { width: 15%; transform: translateX(0); }
+        100% { width: 85%; transform: translateX(20px); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .loader-bar-fill { animation: none; width: 100%; }
+      }
+    </style>
+    <noscript>
+      <style>
+        #dcai-initial-loader { display: none !important; }
+      </style>
+    </noscript>
+  </head>
+  <body class="bg-paper text-ink font-body antialiased selection:bg-accent-tint selection:text-ink">
+    <div id="dcai-initial-loader" aria-hidden="true">
+      <div class="loader-bus">
+        <div class="loader-line">
+          <span class="loader-node n1"></span>
+          <span class="loader-node n2"></span>
+          <span class="loader-node n3"></span>
+        </div>
+        <div class="loader-wordmark">dcai</div>
+      </div>
+      <div class="loader-bar-track">
+        <div class="loader-bar-fill"></div>
+      </div>
+      <div class="loader-subtext">Digicom Controls & Automation</div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
